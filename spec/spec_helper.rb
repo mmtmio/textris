@@ -5,6 +5,7 @@ require "codeclimate-test-reporter"
 require "sidekiq/testing"
 require 'textris/delay/active_job/missing'
 require 'textris/delay/sidekiq/missing'
+require 'active_support/testing/time_helpers'
 
 CodeClimate::TestReporter.configuration.logger = Logger.new("/dev/null")
 
@@ -30,9 +31,10 @@ if Scrutinizer::Ocular.should_run? ||
 end
 
 require_relative '../lib/textris'
-require_relative '../app/controllers/textris/rendering_controller'
 
 RSpec.configure do |config|
+  config.include ActiveSupport::Testing::TimeHelpers
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
