@@ -31,5 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'actionmailer',  '>= 4.0'
   spec.add_runtime_dependency 'activejob',     '>= 4.2'
   spec.add_runtime_dependency 'activesupport', '>= 4.2'
-  spec.add_runtime_dependency 'phony',         '~> 2.8'
+  spec.add_runtime_dependency 'phony',         '>= 2.8', '< 4'
 end
