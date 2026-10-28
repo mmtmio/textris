@@ -1,3 +1,5 @@
+require 'active_support/core_ext/module/introspection'
+
 module Textris
   module Delivery
     class Mail < Textris::Delivery::Base
@@ -79,7 +81,7 @@ module Textris
       def get_rails_variable(var)
         case var
         when 'app'
-          Rails.application.class.parent_name
+          Rails.application.class.module_parent_name
         when 'env'
           Rails.env
         end

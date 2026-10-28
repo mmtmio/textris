@@ -10,7 +10,7 @@ module Textris
           if texter.present?
             args = ::Textris::Delay::Sidekiq::Serializer.deserialize(args)
 
-            texter.new(action, *args).call_action.deliver
+            texter.new(action.to_sym, *args).call_action.deliver
           end
         end
       end

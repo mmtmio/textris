@@ -12,9 +12,8 @@ module Textris
         log :debug, "To: #{message.to.map { |i| Phony.format(to) }.join(', ')}"
         log :debug, "Content: #{message.content}"
         (message.media_urls || []).each_with_index do |media_url, index|
-          logged_message = index == 0 ? "Media URLs: " : "            "
-          logged_message << media_url
-          log :debug, logged_message
+          prefix = index == 0 ? "Media URLs: " : "            "
+          log :debug, prefix + media_url
         end
       end
 
