@@ -109,11 +109,12 @@ describe Textris::Delay::Sidekiq do
       it 'does not serialize wrong ActiveRecord object arrays' do
         users = [XModel.new('48666777888'), YModel.new('48666777889')]
 
-        MyTexter.delay.serialized_array_action(users)
+        expect(Textris::Delay::Sidekiq::Serializer.serialize([users])).to eq([users])
 
+        # Sidekiq 7+ only accepts JSON-native job arguments, so the unserialized records are rejected when enqueued
         expect do
-          Textris::Delay::Sidekiq::Worker.drain
-        end.to raise_error(NoMethodError)
+          MyTexter.delay.serialized_array_action(users)
+        end.to raise_error(ArgumentError, /must be native JSON types/)
       end
 
       it 'does not raise when ActiveRecord not loaded' do
