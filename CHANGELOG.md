@@ -1,4 +1,12 @@
-# 0.7.0 (latest release)
+# 0.8.0 (latest release)
+
+* runs on Ruby 4.0 and Rails 8.1, and allows phony 3
+* Sidekiq `delay` jobs pass the action name as a string, so Sidekiq 7+ accepts them
+* log delivery no longer appends to a string literal
+* mail delivery requires the Active Support extension it uses for the app name
+* replaced Travis, Appraisal, Code Climate and Scrutinizer with a GitHub Actions workflow
+
+# 0.7.0
 
 * added support for using Twilio Copilot via messaging_service_sid
 
