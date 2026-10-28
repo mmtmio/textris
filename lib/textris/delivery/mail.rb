@@ -1,3 +1,5 @@
+require 'active_support/core_ext/module/introspection'
+
 module Textris
   module Delivery
     class Mail < Textris::Delivery::Base
